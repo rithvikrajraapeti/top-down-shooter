@@ -28,7 +28,7 @@ coin_imgs = import_folder("items/coin")
 #bullet_img = pygame.image.load("bullets/bluebullet.png").convert_alpha()
 bullet_img = pygame.image.load("bullet/0.png").convert_alpha()
 
-boundary_block_img = pygame.image.load("tileset/skyBlock.png").convert_alpha()
+boundary_block_img = pygame.image.load("tiles/separated/skyBlock.png").convert_alpha()
 
 # Sounds
 coin_sound = pygame.mixer.Sound("sounds/coin.wav")
@@ -84,7 +84,8 @@ class Player(pygame.sprite.Sprite):
         self.health = 100
 
         self.gun_barrel_offset = pygame.math.Vector2(45,20)
-        
+
+
 
     def player_turning(self): 
         self.mouse_coords = pygame.mouse.get_pos() 
@@ -349,7 +350,7 @@ class Enemy(pygame.sprite.Sprite):
         if pygame.Rect.colliderect(self.base_zombie_rect, player.base_player_rect): # player and enemy collides
             self.kill()
             player.get_damage(self.attack_damage)
-            game_stats["enemies_killed_or_removed"] += 1
+            game_stats["enemies_killed_or_removed"] += 2
             # scream_sound.play()
 
     def draw_enemy_health(self, x, y):
@@ -730,7 +731,7 @@ while True:
             game_stats["necromancer_death_count"] = 0
             game_stats["nightborne_death_count"] = 0
             game_stats["enemies_killed_or_removed"] = 0
-            game_stats["coins"] = 0
+            game_stats["no.of coins"] = 0
             
             game_level.spawn_enemies()    
             game_level.spawn_health_potions()
